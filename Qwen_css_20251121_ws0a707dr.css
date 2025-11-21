@@ -1,0 +1,378 @@
+/* ===== Theme Variables ===== */
+:root {
+    /* Dark Mode (default) */
+    --bg-primary: #0f0f1b;
+    --bg-secondary: #1a1a2e;
+    --bg-card: #16213e;
+    --text-primary: #e6e6ff;
+    --text-secondary: #a9a9c5;
+    --accent: #00f5d4;
+    --accent-glow: rgba(0, 245, 212, 0.2);
+    --border: #2d3759;
+    --success: #00f5d4;
+    --warning: #ffcc00;
+    --danger: #ff6b6b;
+    --checkbox-bg: #252d4a;
+    --checkbox-checked: #00f5d4;
+    --transition: all 0.3s ease;
+}
+
+.light-theme {
+    /* Light Mode */
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --bg-card: #f1f3f5;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --accent: #007bff;
+    --accent-glow: rgba(0, 123, 255, 0.1);
+    --border: #dee2e6;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --checkbox-bg: #e9ecef;
+    --checkbox-checked: #007bff;
+}
+
+/* ===== Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    transition: var(--transition);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ===== Header ===== */
+header {
+    text-align: center;
+    padding: 24px 0 16px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    width: 52px;
+    height: 28px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.theme-toggle::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: var(--transition);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.light-theme .theme-toggle::before {
+    transform: translateX(24px);
+    background: #ffc107;
+}
+
+.theme-icon {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0 4px;
+    transition: var(--transition);
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 2.4rem;
+    background: linear-gradient(90deg, var(--accent), #6600ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* ===== Cards & Panels ===== */
+.card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===== Checklist Table ===== */
+.checklist-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin-top: 12px;
+}
+
+.checklist-table th {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 14px 12px;
+    font-weight: 700;
+    color: var(--accent);
+    text-align: center;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border-radius: 8px 8px 0 0;
+}
+
+.checklist-table td {
+    padding: 16px 12px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(4px);
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.checklist-table tr:hover td:not(:empty) {
+    background: var(--accent-glow);
+}
+
+.input-label {
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding-left: 16px;
+}
+
+.must-have .input-label {
+    color: var(--danger);
+    font-weight: 700;
+}
+
+/* ===== Checkbox Styling ===== */
+.checkbox-wrapper {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    position: relative;
+}
+
+.checkbox-wrapper input {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: var(--checkbox-bg);
+    border: 2px solid var(--border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.checkbox-wrapper input:checked + .checkbox-custom {
+    background: var(--checkbox-checked);
+    border-color: var(--checkbox-checked);
+    transform: scale(1.05);
+}
+
+.checkbox-custom::after {
+    content: '✓';
+    color: #0f0f1b;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.checkbox-wrapper input:checked + .checkbox-custom::after {
+    opacity: 1;
+}
+
+/* Empty cells */
+td:empty::before {
+    content: '—';
+    color: var(--text-secondary);
+    opacity: 0.4;
+}
+
+/* ===== Totals Bar ===== */
+.totals-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.total-box {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 18px 12px;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.total-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px var(--accent-glow);
+    border-color: var(--accent);
+}
+
+.total-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.total-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.grand-total .total-value {
+    font-size: 1.6rem;
+    background: linear-gradient(90deg, var(--accent), #6600ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ===== Sync Reminder & Grade ===== */
+.sync-reminder {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed var(--accent);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 10px;
+}
+
+.grade-display {
+    text-align: center;
+    padding: 24px;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-top: 20px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.grade-a { color: var(--success); }
+.grade-b { color: var(--warning); }
+.grade-c { color: #ff9e6d; }
+.grade-d { color: var(--danger); }
+
+/* Guide List */
+.guide-list {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.grade-tag {
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+.grade-tag.grade-a { background: rgba(0, 245, 212, 0.15); color: var(--success); }
+.grade-tag.grade-b { background: rgba(255, 204, 0, 0.15); color: var(--warning); }
+.grade-tag.grade-c { background: rgba(255, 158, 109, 0.15); color: #ff9e6d; }
+.grade-tag.grade-d { background: rgba(255, 107, 107, 0.15); color: var(--danger); }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .card {
+        padding: 18px;
+    }
+    h1 { font-size: 2rem; }
+    .theme-toggle { top: 16px; right: 16px; }
+    .checklist-table {
+        font-size: 0.85rem;
+    }
+    .input-label {
+        padding-left: 8px;
+        font-size: 0.9rem;
+    }
+    td, th {
+        padding: 12px 6px;
+    }
+    .totals-bar {
+        grid-template-columns: 1fr;
+    }
+    .grade-display {
+        font-size: 1.6rem;
+        padding: 20px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    body { padding: 12px; }
+    h1 { font-size: 1.7rem; }
+    .checklist-table th, .checklist-table td {
+        padding: 10px 4px;
+        font-size: 0.8rem;
+    }
+}
